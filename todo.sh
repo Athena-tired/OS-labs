@@ -43,6 +43,11 @@ case "${1:-help}" in
             echo "Неверный номер задачи" >&2
             exit 1
         fi
+
+		if [[ "${tasks[$index]}" == *"[x]"* ]]; then
+            echo "Задача $number уже выполнена" >&2
+            exit 1
+        fi
         
         tasks[$index]=$(echo "${tasks[$index]}" | sed 's/\[ \]/[x]/')
         printf "%s\n" "${tasks[@]}" > "$DB"
