@@ -29,7 +29,7 @@ case "${1:-help}" in
             exit 0
         fi
         i=1
-        while IFS= read -r line; do
+        while read -r line; do
             echo "($i) $line"
             ((i++))
         done < "$DB"
